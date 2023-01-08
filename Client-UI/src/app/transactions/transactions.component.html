@@ -1,0 +1,21 @@
+<ng-container *ngIf="transactions.length >= 1"
+  ><ng-container *ngFor="let transaction of transactions">
+    <div class="workout-details">
+      <h4>{{ transaction.sender }}</h4>
+      <p><strong>Confirmed: </strong> {{ transaction.confirmed }}</p>
+      <p>
+        <strong>Amount: </strong
+        >{{ transaction.value | currency : "USD" : "symbol" }}
+      </p>
+      <p>{{ createdDate(transaction.createdAt) }}</p>
+      <span
+        className="material-symbols-outlined"
+        (click)="deleteTransaction(transaction.id)"
+        >delete</span
+      >
+    </div>
+  </ng-container></ng-container
+>
+<ng-container *ngIf="transactions.length == 0">
+  <div class="workout-details">No Available Transaction</div>
+</ng-container>

@@ -1,0 +1,48 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+Client-UI/dist
+Client-UI/tmp
+Client-UI/out-tsc
+Client-UI/bazel-out
+
+# Node
+client-UI/node_modules
+REST-API/node_modules
+REST-API/build
+Client-UI/npm-debug.log
+Client-UI/yarn-error.log
+
+# IDEs and editors
+Client-UI/.idea/
+Client-UI/.project
+Client-UI/.classpath
+Client-UI/.c9/
+Client-UI/*.launch
+Client-UI/.settings/
+Client-UI/*.sublime-workspace
+
+# Visual Studio Code
+Client-UI/.vscode/*
+Client-UI/!.vscode/settings.json
+Client-UI/!.vscode/tasks.json
+Client-UI/!.vscode/launch.json
+Client-UI/!.vscode/extensions.json
+Client-UI/.history/*
+
+# Miscellaneous
+Client-UI/.angular/cache
+Client-UI/.sass-cache/
+Client-UI/connect.lock
+Client-UI/coverage
+Client-UI/libpeerconnection.log
+Client-UI/testem.log
+Client-UI/typings
+
+# System files
+Client-UI/.DS_Store
+Client-UI/Thumbs.db
+
+# env
+Client-UI/.env
+REST-API/.env
