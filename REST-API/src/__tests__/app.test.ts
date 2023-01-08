@@ -41,7 +41,7 @@ describe("transactions", () => {
         describe("given the transaction does exist", () => {
 
             it("should return a 200 status", async () => {
-                const transactionId = 'e4094f71-4f55-4d26-96b9-8c435452f4e6'
+                const transactionId = '9a9d8dca-7cbe-4024-b529-5d73d15499e8'
 
                 await supertest(app).get(`/api/${transactionId}`).expect(200)
             })

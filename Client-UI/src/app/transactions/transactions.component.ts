@@ -14,7 +14,9 @@ export class TransactionsComponent {
   public transaction!: Transaction;
 
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) {
+    this.refreshTransactions()
+  }
 
   ngOnInit(): void {
 
@@ -33,18 +35,11 @@ export class TransactionsComponent {
     })
   }
 
-  addTransaction() {
-    this.api.addTransaction(this.transaction).subscribe(res => {
-      console.log(res)
-    })
-    this.refreshTransactions()
-  }
-
   deleteTransaction(id: String) {
     this.api.deleteTransaction(id).subscribe(res => {
       console.log(res)
+      this.refreshTransactions()
     })
-    this.refreshTransactions()
   }
 
 }

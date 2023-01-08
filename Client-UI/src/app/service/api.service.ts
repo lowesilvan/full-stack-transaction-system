@@ -9,14 +9,15 @@ import { map, Observable, retry } from 'rxjs';
 })
 export class ApiService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getTransactions(): Observable<Api> {
+  getTransactions() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     return this.httpClient.get<Api>('http://localhost:5000/api', { headers, observe: 'body' })
       .pipe(map((res) => {
         return res
-      }), retry(3))
+      }))
   }
 
   addTransaction(data: Transaction): Observable<unknown> {

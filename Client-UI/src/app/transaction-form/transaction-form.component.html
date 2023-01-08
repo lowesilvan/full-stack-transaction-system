@@ -1,1 +1,29 @@
-<p>transaction-form works!</p>
+<form className="create" (ngSubmit)="submit()" #myForm="ngForm">
+  <h3>Add a New Transaction</h3>
+
+  <div>
+    <label for="sender">Sender:</label>
+  <input class="title" name="sender" type="text" [(ngModel)]="transaction.sender" placeholder="enter sender" #sender="ngModel" required />
+  <ng-container *ngIf="sender.invalid && (sender.dirty || sender.touched)">
+    <span class="error">Sender must be valid</span>
+  </ng-container>
+  </div>
+
+  <div>
+    <label for="reciever">Reciever:</label>
+  <input class="title" name="reciever" type="text" [(ngModel)]="transaction.receiver" placeholder="enter receiver" #receiver="ngModel" required />
+  <ng-container *ngIf="receiver.invalid && (receiver.dirty || receiver.touched)">
+    <span class="error">Receiver must be valid</span>
+  </ng-container>
+  </div>
+
+  <div>
+    <label for="amount">Amount (in $):</label>
+  <input type="number" class="load" name="amount" [(ngModel)]="transaction.value"  placeholder="0" #amount="ngModel" required/>
+  <ng-container *ngIf="amount.value == 0 && (amount.dirty || amount.touched)">
+    <span class="error">Amount must be valid</span>
+  </ng-container>
+  </div>
+
+  <button type="submit" [disabled]="myForm.form.invalid">Add Transaction</button>
+</form>
