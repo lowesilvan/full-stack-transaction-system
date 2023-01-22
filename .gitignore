@@ -48,3 +48,5 @@ Client-UI/.env
 REST-API/.env
 
 .DS_Store
+
+database

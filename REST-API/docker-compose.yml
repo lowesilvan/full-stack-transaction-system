@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  server:
+    container_name: express-ts
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: sh -c "wait && npm run dev"
+    env_file: ./.env
+    environment:
+      - PORT=${PORT}
+      - DATABASE=${DATABASE}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "5000:5000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - backend
+    stdin_open: true
+    tty: true
+  
+  mysql:
+    container_name: mysql
+    image: 'bitnami/mysql:latest'
+    restart: always
+    env_file: ./.env
+    environment:
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASS}
+      - MYSQL_DATABASE=${DATABASE}
+    ports:
+      - 3306:3306
+    volumes: 
+      - ./database/data/:/bitnami/mysql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
+      start_period: 5s
+      interval: 5s
+      timeout: 20s
+      retries: 10
+
+networks:
+  backend:

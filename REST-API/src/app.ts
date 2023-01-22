@@ -18,9 +18,10 @@ const port = process.env.PORT || 5000;
 // sequelize instance
 const sequelize = new Sequelize(
     process.env.DATABASE,
-    process.env.DBUSER,
-    process.env.DBPASSWORD,
+    process.env.DB_USER,
+    process.env.DB_PASS,
     {
+        host: process.env.DB_HOST,
         dialect: "mysql",
     }
 );

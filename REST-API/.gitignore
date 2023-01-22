@@ -19,3 +19,6 @@
 .env
 
 .lock
+
+# docker db persist files
+/database
