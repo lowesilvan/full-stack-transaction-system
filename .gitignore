@@ -50,3 +50,5 @@ REST-API/.env
 .DS_Store
 
 database
+
+.env
